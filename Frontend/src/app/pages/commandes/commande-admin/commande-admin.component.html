@@ -1,0 +1,83 @@
+<div class="titre-page d-flex align-items-center gap-2">
+    <i class="fas fa-box titre-icon"></i>
+    <h4>Liste des commandes</h4>
+</div>
+
+<br>
+
+<div class="datatable mt-3">
+    <table class="table table-striped">
+        <thead class="datatable-header">
+            <tr>
+                <th>ID</th>
+                <th>Client</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>État</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let commande of commandeList">
+                <td>{{ commande.id }}</td>
+                <td>{{ commande.utilisateur?.username }}</td>
+                <td>{{ commande.total | number:'1.2-2' }} TND</td>
+                <td>{{ commande.date }}</td>
+                <td>{{ commande.etat }}</td>
+                <td>
+                    <button class="btn btn-sm btn-info me-2" (click)="openDetailsModal(detailsTemplate, commande)">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" (click)="onDeleteCommande(commande.id)">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Détails de commande (modal) -->
+<ng-template #detailsTemplate let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">Détails de la commande #{{ selectedCommande?.id }}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="commande-infos">
+            <div class="info-row">
+                <span class="info-label">👤 Client :</span>
+                <span class="info-value">{{ selectedCommande?.utilisateur?.username }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">📅 Date :</span>
+                <span class="info-value">{{ selectedCommande?.date }}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">💰 Total :</span>
+                <span class="info-value">{{ selectedCommande?.total }} TND</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">📦 État :</span>
+                <span class="info-value">{{ selectedCommande?.etat }}</span>
+            </div>
+        </div>
+
+
+        <h6 class="mt-4">Produits :</h6>
+        <div *ngIf="selectedCommande?.produits?.length > 0" class="produit-list">
+            <div *ngFor="let produit of selectedCommande.produits" class="produit-item">
+                <img [src]="produit.image" alt="{{ produit.nom }}" class="produit-image" />
+                <div class="produit-info">
+                    <p><strong>{{ produit.nom }}</strong></p>
+                    <p>Prix : {{ produit.prix }} TND</p>
+                    <p>Quantité : {{ produit.quantite }}</p>
+                </div>
+            </div>
+        </div>
+        <p *ngIf="!selectedCommande?.produits?.length">Aucun produit.</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeModal()">Fermer</button>
+    </div>
+</ng-template>

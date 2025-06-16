@@ -1,0 +1,67 @@
+<div class="titre-page d-flex align-items-center gap-2">
+  <i class="fas fa-folder-open titre-icon"></i>
+  <h4>Liste des catégories</h4>
+</div>
+
+<br>
+
+<div class="d-flex justify-content-between align-items-center">
+  <button class="btn btn-primary" (click)="openModal(content)">
+    <i class="fas fa-plus"></i>&nbsp; Ajouter
+  </button>
+</div>
+
+<div class="datatable mt-3">
+  <table class="table table-striped">
+    <thead class="datatable-header">
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let categorie of categorieList">
+        <td>{{ categorie.id }}</td>
+        <td>{{ categorie.nom }}</td>
+        <td>{{ categorie.description }}</td>
+        <td>
+          <button class="btn btn-sm btn-info me-2" (click)="openModal(content, categorie)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="onDelete(categorie.id)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #content>
+  <div class="modal-header">
+    <h5 class="modal-title">{{ isEditMode ? 'Modifier la catégorie' : 'Ajouter une catégorie' }}</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="categorieForm">
+      <div class="mb-3">
+        <label>Nom</label>
+        <input type="text" class="form-control" formControlName="nom" />
+      </div>
+      <div class="mb-3">
+        <label>Description</label>
+        <textarea class="form-control" formControlName="description"></textarea>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">
+      <i class="fas fa-times"></i> Annuler
+    </button>
+    <button type="button" class="btn btn-primary" (click)="saveCategorie()">
+      <i class="fas fa-save"></i> Enregistrer
+    </button>
+  </div>
+</ng-template>

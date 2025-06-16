@@ -1,0 +1,174 @@
+<div class="accueil-container">
+  <!-- Header Section -->
+  <header class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="logo-container">
+        <h1 class="company-name">SECURISAT</h1>
+        <p class="company-tagline">Votre sécurité, notre expertise</p>
+      </div>
+      <div class="hero-text">
+        <h2>Plus de 25 ans d'expérience en sécurité électronique</h2>
+        <p>Spécialisés dans la protection électronique, la vidéosurveillance, le contrôle d'accès et l'automatisation</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" (click)="scrollToSection('services')">Nos Services</button>
+          <button class="btn-primary" (click)="scrollToSection('contact')">Nous Contacter</button>
+            <button class="btn-primary" (click)="produitList()">Nos Produits</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2>À Propos de SECURISAT</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p class="lead">
+            Créée le 1er janvier 1999, SECURISAT est une société tunisienne leader dans le domaine de la sécurité électronique.
+          </p>
+          <p>
+            Dirigée par Mr. BELKHIRIA AMOR, notre entreprise s'est imposée sur le marché grâce à une sélection rigoureuse 
+            des meilleures marques et à une équipe d'experts qualifiés.
+          </p>
+          <div class="values">
+            <div class="value-item">
+              <div class="value-icon">🛡️</div>
+              <h4>Sécurité</h4>
+              <p>Le respect de la sécurité guide tous nos projets</p>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">💡</div>
+              <h4>Innovation</h4>
+              <p>Technologies de pointe et solutions avant-gardistes</p>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">🎯</div>
+              <h4>Excellence</h4>
+              <p>Intervention qualifiée et assistance après-vente</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nos Services</h2>
+        <div class="section-divider"></div>
+        <p>Des solutions complètes pour votre sécurité</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" *ngFor="let service of services">
+          <div class="service-icon">
+            <ng-container [ngSwitch]="service.icon">
+              <span *ngSwitchCase="'shield'">🛡️</span>
+              <span *ngSwitchCase="'video'">📹</span>
+              <span *ngSwitchCase="'key'">🔑</span>
+              <span *ngSwitchCase="'door'">🚪</span>
+            </ng-container>
+          </div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients Section -->
+  <section class="clients-section" id="clients">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nos Références</h2>
+        <div class="section-divider"></div>
+        <p>La confiance des leaders du marché</p>
+      </div>
+      <div class="clients-categories">
+        <div class="client-category" *ngFor="let category of clients">
+          <h3>{{ category.category }}</h3>
+          <div class="client-list">
+            <div class="client-item" *ngFor="let company of category.companies">
+              {{ company }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="additional-clients">
+        <p class="additional-text">
+          Et aussi : Gouvernorats, Maisons des jeunes, CNAM, STEG, SONED, Facultés, 
+          Pharmacies, Cafés, Restaurants, Boutiques et maisons privées...
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contactez-nous</h2>
+        <div class="section-divider"></div>
+        <p>Notre équipe est à votre disposition</p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-details">
+              <h4>Adresse</h4>
+              <p>AV. La Perle du Sahel GP1<br>Croisement Khezama<br>4051 Sousse, Tunisie</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-details">
+              <h4>Téléphone / Fax</h4>
+              <p>73 244 582</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-details">
+              <h4>Email</h4>
+              <p>belkhiria.amor@planet.tn</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Demande de devis</h3>
+          <form>
+            <div class="form-group">
+              <input type="text" placeholder="Nom complet" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" placeholder="Téléphone">
+            </div>
+            <div class="form-group">
+              <select required>
+                <option value="">Service souhaité</option>
+                <option value="protection">Protection Électronique</option>
+                <option value="video">Vidéosurveillance</option>
+                <option value="access">Contrôle d'Accès</option>
+                <option value="automation">Automatisation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Décrivez votre projet" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Envoyer la demande</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

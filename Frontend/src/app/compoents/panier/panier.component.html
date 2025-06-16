@@ -1,0 +1,64 @@
+<body>
+
+    <!-- Navbar -->
+     <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <div class="logo">
+              <img src="assets/images/suc.jpeg" class="styled-image"  alt="Logo">
+            </div>
+            <h1 class="company-title">SECURISAT</h1>
+          </div>
+          <div class="navbar-menu">
+            <!--
+              <a href="#" class="active"><i class="fas fa-home"></i> Accueil</a>
+              <a href="#"><i class="fas fa-tags"></i> Promotions</a>
+
+              <span class="cart-count">0</span>
+            -->
+          
+            <a href="/panier">🛒 Panier </a>
+            <a href="/account/signup"><i class="bi bi-person"></i> Compte</a>
+          </div>
+    </nav>
+  
+
+    <!-- Contenu principal -->
+    <div class="container mt-4 panier-container">
+        <h3 class="mb-4 text-primary">🛒 Votre Panier</h3>
+        <div *ngIf="panier.length > 0; else vide">
+            <div class="panier-liste">
+                <div *ngFor="let item of panier; let i = index" class="panier-item">
+                    <img [src]="item.image" alt="{{ item.nom }}" class="panier-image" />
+
+                    <div class="panier-details">
+                        <h5>{{ item.nom }}</h5>
+                        <p class="prix">{{ item.prix }} €</p>
+                    </div>
+                    <div class="panier-actions">
+                        <button class="btn btn-supprimer" (click)="supprimerProduit(i)">
+                            Supprimer
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="panier-footer">
+                <h5>Total : <span class="text-success">{{ total }} €</span></h5>
+            </div>
+        <div class="panier-footer">
+            <button class="btn btn-commander" (click)="passerCommande()">
+               Passer commande   
+            </button>
+        </div>  
+
+        </div>
+        <ng-template #vide>
+            <p class="text-muted">Votre panier est vide.</p>
+        </ng-template>
+       
+      
+    </div>
+
+
+
+</body>

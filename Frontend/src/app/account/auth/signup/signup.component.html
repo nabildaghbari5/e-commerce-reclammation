@@ -1,0 +1,47 @@
+<div class="account-pages my-5 pt-sm-5" *ngIf="!authResponse.mfaEnabled">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="card overflow-hidden">
+          <div class="card-body pt-0">
+            <div class="p-2">
+              <div class="text-center mb-4">
+                <img src="assets/images/suc.jpeg" alt="Logo" class="styled-image" style="max-width: 300px;" />
+              </div>
+              <form class="needs-validation" name="signupForm" [formGroup]="signupForm" (ngSubmit)="onSubmit()"
+                novalidate>
+
+                <div class="mb-3">
+                  <label for="username" class="form-label">Nom d'utilisateur</label>
+                  <input type="text" formControlName="username" class="form-control" id="username"
+                    placeholder="Nom d'utilisateur" />
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" formControlName="email" class="form-control" id="email" placeholder="e-mail" />
+                </div>
+
+                <div class="mb-3">
+                  <label for="password" class="form-label">Mot de passe</label>
+                  <input type="password" formControlName="password" class="form-control" id="password"
+                    placeholder="Mot de passe" />
+                </div>
+
+                <div class="mt-4 d-grid">
+                  <button class="btn btn-primary" type="submit" [disabled]="signupForm.invalid">S'inscrire</button>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 text-center">
+          <p>Already have ? <a routerLink="/account/login" class="fw-medium text-primary">SignIn</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
