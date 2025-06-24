@@ -21,6 +21,12 @@ export const MENU = {
             link: 'commandes/suivi-commande',  
 
         },     
+         {
+            id: 4,
+            label: 'Suivi reclamations',  
+             link: 'reclamation/reclamation-admin', 
+
+        },     
        
     ],
 
@@ -28,16 +34,16 @@ export const MENU = {
     Client: [
         {
             id: 1,
-            label: "Rendez-vous",
-            link: 'rendez-vous/rendez-client', 
-
+            label: "Suivi de commande",
+            link: 'commandes/suivi-commande-client', 
         },
-
         {
             id: 2,
-            label: "Suivi Contrat",
-            link: 'contrat-client', 
-
+            label: "Réclamation",  
+            link: 'reclamation/reclamation-client', 
         },
+
+
+       
     ],
 };

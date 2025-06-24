@@ -26,6 +26,10 @@ export class CommandeService {
     return this.http.get(`${this.baseUrl}/findById/${id}`);
   }
 
+  findCommandeByUser(userId:any):Observable<any>{
+     return this.http.get<any[]>(`${this.baseUrl}/getCommandeByUtilisateur/${userId}`);
+  }
+
 
 
 }

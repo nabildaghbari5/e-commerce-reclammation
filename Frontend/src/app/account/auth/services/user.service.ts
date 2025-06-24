@@ -52,7 +52,7 @@ export class UserService {
     return this.http.put<UserConnected>(url, UserConnected);
   }
 
-  findById(id: number): Observable<UserConnected> {
+  findById(id: any): Observable<UserConnected> {
     let url = `${this.baseUrl()}/${id}`;
     return this.http.get<UserConnected>(url);
   }

@@ -63,9 +63,9 @@ export class PanierComponent implements OnInit {
     next: (res) => {
       this.panierService.viderPanier();
       this.chargerPanier();
-      this.router.navigate(['/']); 
+      this.router.navigate(['commandes/suivi-commande-client']); 
 
-    },
+    },  
     error: (err) => {
       console.error(err);
     }
