@@ -9,11 +9,12 @@
       </div>
       <div class="hero-text">
         <h2>Plus de 25 ans d'expérience en sécurité électronique</h2>
-        <p>Spécialisés dans la protection électronique, la vidéosurveillance, le contrôle d'accès et l'automatisation</p>
+        <p>Spécialisés dans la protection électronique, la vidéosurveillance, le contrôle d'accès et l'automatisation
+        </p>
         <div class="hero-buttons">
           <button class="btn-primary" (click)="scrollToSection('services')">Nos Services</button>
           <button class="btn-primary" (click)="scrollToSection('contact')">Nous Contacter</button>
-            <button class="btn-primary" (click)="produitList()">Nos Produits</button>
+          <button class="btn-primary" (click)="produitList()">Nos Produits</button>
         </div>
       </div>
     </div>
@@ -29,10 +30,12 @@
       <div class="about-content">
         <div class="about-text">
           <p class="lead">
-            Créée le 1er janvier 1999, SECURISAT est une société tunisienne leader dans le domaine de la sécurité électronique.
+            Créée le 1er janvier 1999, SECURISAT est une société tunisienne leader dans le domaine de la sécurité
+            électronique.
           </p>
           <p>
-            Dirigée par Mr. BELKHIRIA AMOR, notre entreprise s'est imposée sur le marché grâce à une sélection rigoureuse 
+            Dirigée par Mr. BELKHIRIA AMOR, notre entreprise s'est imposée sur le marché grâce à une sélection
+            rigoureuse
             des meilleures marques et à une équipe d'experts qualifiés.
           </p>
           <div class="values">
@@ -102,7 +105,7 @@
       </div>
       <div class="additional-clients">
         <p class="additional-text">
-          Et aussi : Gouvernorats, Maisons des jeunes, CNAM, STEG, SONED, Facultés, 
+          Et aussi : Gouvernorats, Maisons des jeunes, CNAM, STEG, SONED, Facultés,
           Pharmacies, Cafés, Restaurants, Boutiques et maisons privées...
         </p>
       </div>
@@ -143,18 +146,18 @@
         </div>
         <div class="contact-form">
           <h3>Demande de devis</h3>
-          <form>
+          <form #devisForm="ngForm" (ngSubmit)="sendDevis()" novalidate>
             <div class="form-group">
-              <input type="text" placeholder="Nom complet" required>
+              <input type="text" name="name" [(ngModel)]="devisData.name" placeholder="Nom complet" required />
             </div>
             <div class="form-group">
-              <input type="email" placeholder="Email" required>
+              <input type="email" name="email" [(ngModel)]="devisData.email" placeholder="Email" required />
             </div>
             <div class="form-group">
-              <input type="tel" placeholder="Téléphone">
+              <input type="tel" name="phone" [(ngModel)]="devisData.phone" placeholder="Téléphone" />
             </div>
             <div class="form-group">
-              <select required>
+              <select name="service" [(ngModel)]="devisData.service" required>
                 <option value="">Service souhaité</option>
                 <option value="protection">Protection Électronique</option>
                 <option value="video">Vidéosurveillance</option>
@@ -163,7 +166,8 @@
               </select>
             </div>
             <div class="form-group">
-              <textarea placeholder="Décrivez votre projet" rows="4"></textarea>
+              <textarea name="message" [(ngModel)]="devisData.message" placeholder="Décrivez votre projet"
+                rows="4"></textarea>
             </div>
             <button type="submit" class="btn-primary">Envoyer la demande</button>
           </form>

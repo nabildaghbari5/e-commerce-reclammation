@@ -1,7 +1,6 @@
 package cotonart.pfe.textil.controllers;
 
 
-import cotonart.pfe.textil.entities.Message;
 import cotonart.pfe.textil.entities.Utilisateur;
 import cotonart.pfe.textil.services.IUtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -46,4 +46,14 @@ export const MENU = {
 
        
     ],
+    Technicien: [
+        {
+            id: 1,
+            label: "Réclamation",  
+            link: 'reclamation/reclamation-technicien', 
+        },
+
+
+       
+    ],
 };

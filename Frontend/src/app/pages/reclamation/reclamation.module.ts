@@ -6,12 +6,14 @@ import { ReclamationAdminComponent } from './reclamation-admin/reclamation-admin
 import { ReclamationClientComponent } from './reclamation-client/reclamation-client.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReclamationTechnicienComponent } from './reclamation-technicien/reclamation-technicien.component';
 
 
 @NgModule({
   declarations: [
     ReclamationClientComponent,
-    ReclamationAdminComponent
+    ReclamationAdminComponent,
+    ReclamationTechnicienComponent
   ],
   imports: [
     CommonModule,

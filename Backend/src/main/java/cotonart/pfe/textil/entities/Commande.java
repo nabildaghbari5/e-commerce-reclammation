@@ -40,7 +40,5 @@ public class Commande implements Serializable {
 
 
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Livraison livraison;
 
 }

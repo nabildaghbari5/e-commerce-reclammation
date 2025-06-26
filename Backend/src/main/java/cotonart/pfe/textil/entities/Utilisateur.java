@@ -69,9 +69,7 @@ public class Utilisateur implements  UserDetails {
     @JsonIgnore
     private List<Commande> commande;
 
-   /*
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "utilisateur", fetch = FetchType.LAZY)
-    private List<Message> messages; */
+
 
 
 }

@@ -15,6 +15,7 @@ import { HttpInterceptorService } from './account/auth/interceptor/http-intercep
 import { HomeComponent } from './compoents/home/home.component';
 import { PanierComponent } from './compoents/panier/panier.component';
 import { AccueilComponent } from './compoents/accueil/accueil.component';
+import { FormsModule } from '@angular/forms';
 
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -29,7 +30,7 @@ export function createTranslateLoader(http: HttpClient): any {
   ],
   imports: [
     BrowserModule,
-   
+    FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,          // durée d'affichage en ms

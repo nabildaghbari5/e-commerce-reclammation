@@ -23,19 +23,32 @@ public class TextilApplication {
 	@Bean
 	CommandLineRunner initAdmin(UtilisateurRepository utilisateurRepository, PasswordEncoder passwordEncoder) {
 		return args -> {
-			String adminUsername = "wissem";
-			if (utilisateurRepository.findByUsername(adminUsername).isEmpty()) {
-				Utilisateur admin = new Utilisateur();
-				admin.setUsername(adminUsername);
-				admin.setEmail("wissem@gmail.com");
-				admin.setPassword(passwordEncoder.encode("123")); // à changer pour un mot de passe sécurisé
-				admin.setRole(Role.ADMIN);
-				utilisateurRepository.save(admin);
-				System.out.println("Utilisateur ADMIN créé.");
-			} else {
-				System.out.println("Utilisateur ADMIN existe déjà.");
-			}
+			createUserIfNotExists(utilisateurRepository, passwordEncoder,
+					"wissem", "wissem@gmail.com", "123", Role.ADMIN);
+
+			createUserIfNotExists(utilisateurRepository, passwordEncoder,
+					"Ahmed", "ahmed@gmail.com", "123", Role.TECHNICIEN);
 		};
 	}
+
+	private void createUserIfNotExists(UtilisateurRepository repository,
+									   PasswordEncoder encoder,
+									   String username,
+									   String email,
+									   String rawPassword,
+									   Role role) {
+		if (repository.findByUsername(username).isEmpty()) {
+			Utilisateur user = new Utilisateur();
+			user.setUsername(username);
+			user.setEmail(email);
+			user.setPassword(encoder.encode(rawPassword)); // Remplacer par un mot de passe sécurisé en production
+			user.setRole(role);
+			repository.save(user);
+			System.out.println("Utilisateur " + role.name() + " créé : " + username);
+		} else {
+			System.out.println("Utilisateur " + role.name() + " existe déjà : " + username);
+		}
+	}
+
 
 }

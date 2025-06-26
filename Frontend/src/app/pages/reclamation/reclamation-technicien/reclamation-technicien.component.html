@@ -23,7 +23,7 @@
         <td>{{ reclamation.objet }}</td>
         <td>{{ reclamation.message }}</td>
         <td>
-        <span *ngIf="reclamation.statut === 'EN_ATTENTE'" class="badge badge-warning">En attente</span>
+            <span *ngIf="reclamation.statut === 'EN_ATTENTE'" class="badge badge-warning">En attente</span>
           <span *ngIf="reclamation.statut === 'REFUSEE'" class="badge badge-danger">Refusée</span>
           <span *ngIf="reclamation.statut === 'EN_COURS'" class="badge badge-primary">En cours</span>
           <span *ngIf="reclamation.statut === 'TRAITEE'" class="badge badge-success">Traitée</span>
@@ -36,7 +36,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
               <li><a class="dropdown-item" (click)="updateStatus(reclamation.id, 'EN_COURS')"> &nbsp; En cours</a></li>
-              <li><a class="dropdown-item" (click)="updateStatus(reclamation.id, 'REFUSEE')"> &nbsp; Refusée</a></li>
+              <li><a class="dropdown-item" (click)="updateStatus(reclamation.id, 'TRAITEE')"> &nbsp; Traitée</a></li>
             </ul>
           </button>
           <button type="button" class="btn btn-danger btn-sm btn-rounded" (click)="onDelete(reclamation.id)">

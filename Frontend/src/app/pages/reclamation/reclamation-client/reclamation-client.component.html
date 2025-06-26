@@ -29,9 +29,11 @@
         <td>{{ reclamation.objet }}</td>
         <td>{{ reclamation.message }}</td>
         <td>
-          <span *ngIf="reclamation.statut === 'En attente'" class="badge badge-warning">En attente</span>
-          <span *ngIf="reclamation.statut === 'EN_COURS'" class="badge badge-primary"> En cours</span>
+          <span *ngIf="reclamation.statut === 'EN_ATTENTE'" class="badge badge-warning">En attente</span>
+          <span *ngIf="reclamation.statut === 'REFUSEE'" class="badge badge-danger">Refusée</span>
+          <span *ngIf="reclamation.statut === 'EN_COURS'" class="badge badge-primary">En cours</span>
           <span *ngIf="reclamation.statut === 'TRAITEE'" class="badge badge-success">Traitée</span>
+
         </td>
         <td>
           <button type="button" class="btn btn-info btn-sm btn-rounded" (click)="openModal(content, reclamation)">

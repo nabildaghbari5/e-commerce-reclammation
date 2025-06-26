@@ -57,9 +57,11 @@ export class LoginComponent implements OnInit {
 
             switch (this.authResponse.role) {
                 case 'ACHETEUR':  
-                  this.router.navigate(['/']); 
+                  this.router.navigate(['/']);  
                   break;
-
+                case 'TECHNICIEN':  
+                  this.router.navigate(['/reclamation/reclamation-technicien']); 
+                  break;
                 default:  
                    this.router.navigate(['/products/catégorie']); 
                   break;
